@@ -11,7 +11,47 @@ A single page application micro-framework with routing.
 
 ## Installation
 
-Download to your project directory, add `README.md`, and commit:
+You will need webpack and soy-loader to implement soy-spa. 
+
+Example webpack-config:
+
+```
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  entry: './src/index.ts',
+  module: {
+    rules: [
+      { test: /\.tsx?$/, use: 'ts-loader', exclude: /node_modules/ },
+      { test: /\.soy$/, loader: 'soy-loader' },
+      { test: /\.css$/, use: ['style-loader', 'css-loader']}
+    ]
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+    modules: [
+      path.resolve(__dirname, 'node_modules'),
+    ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'SPA',
+      template: 'index.html',
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true,
+        removeRedundantAttributes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true
+      }
+    })
+  ]
+};
+```
+
+Installing soy-spa
 
 With NPM: 
 
@@ -47,9 +87,9 @@ Configure your Application:
 ```
 const config: AppOptions = {
   element: document.querySelector('your-app-html-element'),
-  routes: Routes,
-  templateDirectory: './views',
-  partialsDir: './partials' 
+  routes: Routes, // Your defined routes.
+  templateDirectory: './views', // Where your .soy page templates live.
+  partialsDir: './partials'  // Where your .soy partials live (ie. header, footer).
 }
 ```
 
@@ -59,6 +99,7 @@ Create the application:
 class MyApp extends Application {
   navigation: Array<string> = ['home', 'about', 'anotherpage'];
   childComponents: Array<string> = [
+    //html-element-name:soyfilename -> datatobind
     'app-header:header -> navigation', // Bind data with the -> to access MyApp.navigation
     'app-footer:footer' // Example of a partial with no data-binding
   ]
