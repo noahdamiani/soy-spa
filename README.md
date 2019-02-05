@@ -1,6 +1,6 @@
 # SOY-SPA
 
-A single page application micro-framework with routing.
+A single page application micro-framework with routing, built for use with Google .soy templates.
 
 ## Table of Contents
 
