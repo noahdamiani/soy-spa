@@ -86,7 +86,7 @@ Configure your Application:
 
 ```
 const config: AppOptions = {
-  element: document.querySelector('your-app-html-element'),
+  element: document.querySelector('app-container'), // The name of your app html element.
   routes: Routes, // Your defined routes.
   templateDirectory: './views', // Where your .soy page templates live.
   partialsDir: './partials'  // Where your .soy partials live (ie. header, footer).
@@ -111,6 +111,25 @@ class MyApp extends Application {
 }
 
 new SoyApp(config);
+```
+
+Index.html
+```
+<!doctype html>
+<html>
+
+<head>
+  <title>Example SOY app</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="/">
+</head>
+
+<body>
+  <app-header></app-header>
+  <app-container></app-container>
+  <app-footer></app-footer>
+</body>
+</html>
 ```
 
 Example component controller, use the load function to asynchronously bind data to the template.
