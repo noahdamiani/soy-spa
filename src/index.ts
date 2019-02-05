@@ -210,7 +210,7 @@ export class BaseView {
     
     if (data.PARTIAL) {
       this.element = document.querySelector(data.TEMPLATE_ID);
-      const template = require(`${this.data.SOY_PATH}/${data.key}.soy`);
+      const template = require(`../../${this.data.SOY_PATH}/${data.key}.soy`);
       this.element!.innerHTML = template.render(Object.assign({}, { 'payload': data.data }));
     }
   }
@@ -225,7 +225,7 @@ export class BaseView {
   set = (key: string, value: any) => this.data[key] = value;
 
   render(key: string, item: any, callback: Function) {
-    if (item) this.template = require(`${this.data.SOY_PATH}/${key}.soy`);
+    if (item) this.template = require(`../../${this.data.SOY_PATH}/${key}.soy`);
     callback(this.data.TEMPLATE_ID, this.template.render(Object.assign({}, { 'payload': item })));
   }
   rerender(binded: any, callback: Function) {
