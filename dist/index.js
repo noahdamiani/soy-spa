@@ -214,7 +214,7 @@ var BaseView = /** @class */ (function () {
         this.key = key;
         if (data.PARTIAL) {
             this.element = document.querySelector(data.TEMPLATE_ID);
-            var template = require("../../" + this.data.SOY_PATH + "/" + data.key + ".soy");
+            var template = require("../../../" + this.data.SOY_PATH + "/" + data.key + ".soy");
             this.element.innerHTML = template.render(Object.assign({}, { 'payload': data.data }));
         }
     }
@@ -229,7 +229,7 @@ var BaseView = /** @class */ (function () {
     };
     BaseView.prototype.render = function (key, item, callback) {
         if (item)
-            this.template = require("../../" + this.data.SOY_PATH + "/" + key + ".soy");
+            this.template = require("../../../" + this.data.SOY_PATH + "/" + key + ".soy");
         callback(this.data.TEMPLATE_ID, this.template.render(Object.assign({}, { 'payload': item })));
     };
     BaseView.prototype.rerender = function (binded, callback) {
