@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "charset": "utf8",
+    "pretty": true,
+    "strict": true,
+    "sourceMap": false,
+    "moduleResolution": "node",
+    "alwaysStrict": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "strictNullChecks": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "lib": [
+      "esnext",
+      "es2018",
+      "es7",
+      "es2017",
+      "es6",
+      "es5",
+      "dom",
+      "webworker",
+      "dom.iterable",
+      "scripthost"
+    ],
+    "declaration": true,
+    "emitBOM": true,
+    "outDir": "./dist",
+    "baseUrl": "./src",
+    "disableSizeLimit": true,
+    "downlevelIteration": true
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "author": "Noah Damiani",
+  "license": "MIT",
+  "files": [
+    "dist/",
+    "src/"
+  ],
+  "name": "soy-spa",
+  "version": "1.0.0",
+  "description": "Soy Single Page App.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/noahdamiani/soy-spa.git"
+  },
+  "bugs": {
+    "url": "https://github.com/noahdamiani/soy-spa/issues"
+  },
+  "homepage": "https://github.com/noahdamiani/soy-spa",
+  "devDependencies": {
+    "@types/node": "^10.12.18",
+    "typescript": "^2.9.2"
+  }
+}
