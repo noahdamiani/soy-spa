@@ -111,6 +111,56 @@ class MyApp extends Application {
 }
 
 new SoyApp(config);
+```
+
+Example component controller, use the load function to asynchronously bind data to the template.
+
+```
+import { BaseView } from "soy-spa";
+
+interface ExampleAJAXResponse {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean
+}
+
+export default class HomePageComponent extends BaseView {
+  constructor(data: any) {
+    super(data, 'homepage' //.soy template name);
+  }
+
+  async load(): Promise<ExampleAJAXResponse> {
+    super.load();
+    const slugOne = this.get('slugOne');
+    const slugTwo = this.get('slugTwo');
+    return fetch('https://jsonplaceholder.typicode.com/todos/1')
+      .then(response => response.json())
+      .then(json => Object.assign(json, { slugOne: slugOne, slugTwo: slugTwo }));
+  }
+}
+```
+
+views/homepage.soy
+```
+{namespace views.homepage}
+
+
+/**
+ * Example homepage template.
+ *
+ */
+{template .render}
+   {@param? payload: ? }
+   <h1>Example Homepage with async data</h1>
+   {if $payload}
+      UserId: {$payload.userId}
+      ID: {$payload.id}
+      Title: {$payload.string}
+      Completed: {$payload.completed}
+    {/if}
+{/template}
+
 
 ```
 
